@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BankCloud - Tu Banco Digital</title>
+    <link rel="icon" href="bankcloudtinylogo.ico" type="image/x-icon">
+    
+
+    <link rel="stylesheet" href="style.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/brands.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            
+            <a href="#hero" class="logo-link">
+                
+                <img src="bankcloud big logo.png" alt="Logo BankCloud" class="logo-img" id="header-logo">
+            </a>
+            <button class="menu-toggle" id="mobile-menu-button" aria-label="Abrir menú" aria-expanded="false">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav id="main-nav">
+                <div class="nav-links" id="nav-links-container">
+                    <ul>
+                        <li><a href="#hero" class="nav-link">Inicio</a></li>
+                        <li><a href="#servicios" class="nav-link">Servicios</a></li>
+                        <li><a href="#features" class="nav-link">Beneficios</a></li>
+                        <li><a href="#productos" class="nav-link">Productos</a></li>
+                        <li><a href="#sobre-nosotros" class="nav-link">Nosotros</a></li>
+                        <li><a href="#formularios" class="nav-link">Solicitudes</a></li>
+                        <li><a href="#politicas" class="nav-link">Políticas</a></li>
+                         <li class="login-button-mobile-li"><a href="#" class="login-button mobile-only">Banca en Línea</a></li>
+                    </ul>
+                </div>
+            </nav>
+            <button class="login-button desktop-only">Banca en Línea</button>
+        </div>
+    </header>
+
+    <section id="hero" class="hero">
+        <div class="container hero-content">
+            <div class="hero-text">
+                <h1 data-aos="fade-right" data-aos-delay="100">Una cuenta pensada para ti</h1>
+                <ul>
+                    <li data-aos="fade-up" data-aos-delay="200"><i class="icon">✓</i> Transferencias al instante</li>
+                    <li data-aos="fade-up" data-aos-delay="300"><i class="icon">✓</i> Tarjeta de débito internacional</li>
+                    <li data-aos="fade-up" data-aos-delay="400"><i class="icon">✓</i> Acceso fácil y seguro a tu dinero</li>
+                    <li data-aos="fade-up" data-aos-delay="500"><i class="icon">✓</i> Atención personalizada</li>
+                </ul>
+                <a href="#formularios" class="cta-button" data-aos="fade-up" data-aos-delay="600">Abre tu cuenta ahora</a>
+            </div>
+            <div class="hero-image" data-aos="fade-left" data-aos-delay="200">
+                 <img src="bankcloudmain.jpg" alt="Beneficios BankCloud" onerror="this.src='https://placehold.co/450x300/e0e0e0/555555?text=Imagen+no+disponible'">
+            </div>
+        </div>
+    </section>
+
+    <section id="servicios" class="container section">
+        <h2 data-aos="fade-up">¿Qué necesita hacer hoy?</h2>
+        <p class="subtitle" data-aos="fade-up" data-aos-delay="100">Descubre los servicios bancarios ideales para ti</p>
+
+        <div class="tabs-buttons" data-aos="fade-up" data-aos-delay="200">
+             <button class="tab-button active" data-tab="tab-tarjetas">
+                <i class="fas fa-credit-card"></i> Tarjetas
+            </button>
+            <button class="tab-button" data-tab="tab-divisas">
+                <i class="fas fa-exchange-alt"></i> Cambio de Divisas
+            </button>
+            <button class="tab-button" data-tab="tab-historial">
+                <i class="fas fa-history"></i> Historial Credito
+            </button>
+            <button class="tab-button" data-tab="tab-ahorro">
+                <i class="fas fa-piggy-bank"></i> Ahorro
+            </button>
+            <button class="tab-button" data-tab="tab-servicio-cliente">
+                <i class="fas fa-headset"></i> Servicio al Cliente
+            </button>
+        </div>
+
+        <div class="tabs-content">
+            
+             <div class="tab-pane active" id="tab-tarjetas">
+                <div class="tab-pane-content">
+                    <div class="tab-text">
+                        <h3 data-aos="fade-right" data-aos-id="tab-title">Tarjetas BankCloud</h3>
+                        <p data-aos="fade-right" data-aos-delay="100" data-aos-id="tab-desc">
+                            Descubre un mundo de beneficios con nuestras tarjetas de crédito y débito.
+                            Flexibilidad, seguridad y recompensas exclusivas te esperan para tus compras diarias y viajes.
+                        </p>
+                        <a href="#formularios" class="cta-button" data-aos="fade-up" data-aos-delay="200" data-aos-id="tab-button">Solicitar Tarjeta</a>
+                    </div>
+                    <div class="tab-image" data-aos="fade-left" data-aos-delay="100" data-aos-id="tab-image">
+                        <img src="Cards.jpg" alt="Tarjetas BankCloud" onerror="this.src='https://placehold.co/400x300/cccccc/666666?text=Imagen+no+disponible'">
+                    </div>
+                </div>
+            </div>
+             <div class="tab-pane" id="tab-divisas">
+                 <div class="tab-pane-content">
+                    <div class="tab-text">
+                        <h3 data-aos="fade-right" data-aos-id="tab-title">Cambio de Divisas</h3>
+                        <p data-aos="fade-right" data-aos-delay="100" data-aos-id="tab-desc">
+                            Convierte Pesos Dominicanos (DOP) a Dólares (USD) y Euros (EUR) fácilmente.
+                            Accede a múltiples divisas con tasas competitivas desde nuestra plataforma segura.
+                        </p>
+                        <div class="converters-container" data-aos="fade-up" data-aos-delay="150">
+                            <div class="converter">
+                                <label for="dop-usd">DOP 🇩🇴 a USD 🇺🇸</label>
+                                <input type="number" id="dop-usd" placeholder="Ingrese monto en DOP">
+                                <p class="result" id="result-usd">Resultado: $0.00 USD</p>
+                            </div>
+                            <div class="converter">
+                                <label for="dop-eur">DOP 🇩🇴 a EUR 🇪🇺</label>
+                                <input type="number" id="dop-eur" placeholder="Ingrese monto en DOP">
+                                <p class="result" id="result-eur">Resultado: €0.00 EUR</p>
+                            </div>
+                        </div>
+                         <p class="disclaimer" data-aos="fade-up" data-aos-delay="200"><i>*Tasas de cambio son solo de referencia.</i></p>
+                    </div>
+                    <div class="tab-image" data-aos="fade-left" data-aos-delay="100" data-aos-id="tab-image">
+                        <img src="cambio.png" alt="Cambio de Divisas BankCloud" onerror="this.src='https://placehold.co/400x300/cccccc/666666?text=Imagen+no+disponible'">
+                    </div>
+                </div>
+            </div>
+             <div class="tab-pane" id="tab-historial">
+                 <div class="tab-pane-content">
+                    <div class="tab-text">
+                        <h3 data-aos="fade-right" data-aos-id="tab-title">Historial Crediticio</h3>
+                        <p data-aos="fade-right" data-aos-delay="100" data-aos-id="tab-desc">
+                            Consulta y entiende tu historial de crédito fácilmente. Te ofrecemos herramientas y asesoría
+                            para tomar las mejores decisiones financieras para tu futuro.
+                        </p>
+                        <a href="#" class="cta-button" data-aos="fade-up" data-aos-delay="200" data-aos-id="tab-button">Ver Historial</a>
+                    </div>
+                    <div class="tab-image" data-aos="fade-left" data-aos-delay="100" data-aos-id="tab-image">
+                        <img src="historial crediticio.webp" alt="Historial Crediticio BankCloud" onerror="this.src='https://placehold.co/400x300/cccccc/666666?text=Imagen+no+disponible'">
+                    </div>
+                </div>
+            </div>
+             <div class="tab-pane" id="tab-ahorro">
+                 <div class="tab-pane-content">
+                    <div class="tab-text">
+                        <h3 data-aos="fade-right" data-aos-id="tab-title">Cuentas de Ahorro</h3>
+                        <p data-aos="fade-right" data-aos-delay="100" data-aos-id="tab-desc">
+                            Alcanza tus metas con nuestras cuentas de ahorro flexibles y con atractivos rendimientos.
+                            Ofrecemos diversas opciones para que empieces a construir tu futuro financiero hoy mismo.
+                        </p>
+                        <a href="#formularios" class="cta-button" data-aos="fade-up" data-aos-delay="200" data-aos-id="tab-button">Abrir Cuenta Ahorro</a>
+                    </div>
+                    <div class="tab-image" data-aos="fade-left" data-aos-delay="100" data-aos-id="tab-image">
+                        <img src="cuentasdeahorro.jpg" alt="Ahorro BankCloud" onerror="this.src='https://placehold.co/400x300/cccccc/666666?text=Imagen+no+disponible'">
+                    </div>
+                </div>
+            </div>
+             <div class="tab-pane" id="tab-servicio-cliente">
+                 <div class="tab-pane-content">
+                    <div class="tab-text">
+                        <h3 data-aos="fade-right" data-aos-id="tab-title">Servicio al Cliente</h3>
+                        <p data-aos="fade-right" data-aos-delay="100" data-aos-id="tab-desc">
+                            Estamos aquí para ayudarte en cada paso. Contacta con nuestro equipo de soporte experto a través de
+                            múltiples canales para resolver tus dudas o gestionar tus solicitudes de manera eficiente.
+                        </p>
+                        <a href="#" class="cta-button" data-aos="fade-up" data-aos-delay="200" data-aos-id="tab-button">Contactar Soporte</a>
+                    </div>
+                    <div class="tab-image" data-aos="fade-left" data-aos-delay="100" data-aos-id="tab-image">
+                        <img src="servicio al cliente.webp" alt="Servicio al Cliente BankCloud" onerror="this.src='https://placehold.co/400x300/cccccc/666666?text=Imagen+no+disponible'">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="features" class="container section alternate-bg">
+        <h2 data-aos="fade-up">Ventajas de ser BankCloud</h2>
+        <div class="features-grid">
+            <div class="feature-item" data-aos="fade-up" data-aos-delay="100">
+                <div class="feature-icon">🏦</div>
+                <h3>Facilidad Digital</h3>
+                <p>Gestiona tus productos desde donde estés con nuestra banca en línea.</p>
+            </div>
+            <div class="feature-item" data-aos="fade-up" data-aos-delay="200">
+                <div class="feature-icon">🔒</div>
+                <h3>Seguridad Total</h3>
+                <p>Protegemos tu información y tus fondos con altos estándares de seguridad.</p>
+            </div>
+            <div class="feature-item" data-aos="fade-up" data-aos-delay="300">
+                <div class="feature-icon">💬</div>
+                <h3>Atención Cercana</h3>
+                <p>Resolvemos tus dudas rápidamente a través de múltiples canales.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="productos" class="section">
+        <div class="container">
+             <h2 data-aos="fade-up">Nuestros Productos Destacados</h2>
+             <p class="subtitle" data-aos="fade-up" data-aos-delay="100">Soluciones financieras diseñadas para ti.</p>
+             <div class="card-grid">
+                 <div class="info-card" data-aos="zoom-in" data-aos-delay="200">
+                     <h3>Crédito Personal Rápido</h3>
+                     <p>Obtén el financiamiento que necesitas de forma ágil.</p>
+                     <a href="#">Más Detalles</a>
+                 </div>
+                 <div class="info-card" data-aos="zoom-in" data-aos-delay="300">
+                     <h3>Inversiones Inteligentes</h3>
+                     <p>Haz crecer tu dinero con nuestras opciones de inversión.</p>
+                     <a href="#">Explorar Opciones</a>
+                 </div>
+                  <div class="info-card" data-aos="zoom-in" data-aos-delay="400">
+                     <h3>Seguros BankCloud</h3>
+                     <p>Protege lo que más importa con nuestros seguros.</p>
+                     <a href="#">Ver Seguros</a>
+                 </div>
+            </div>
+        </div>
+    </section>
+
+     <section id="formularios" class="container section alternate-bg">
+        <h2 data-aos="fade-up">Realiza tus Solicitudes</h2>
+        <p class="subtitle text-center" data-aos="fade-up" data-aos-delay="100">Completa nuestros formularios en línea de forma sencilla.</p>
+        <div class="card-grid">
+             <div class="info-card" data-aos="zoom-in" data-aos-delay="200">
+                 <h3>Solicitud Tarjeta Crédito</h3>
+                 <p>Pide tu tarjeta de crédito aquí.</p>
+                 <a href="tarjeta credito.html">Ir al Formulario</a>
+             </div>
+             <div class="info-card" data-aos="zoom-in" data-aos-delay="300">
+                 <h3>Solicitud Tarjeta Débito</h3>
+                 <p>Obtén tu tarjeta de débito.</p>
+                 <a href="tarjeta debito.html">Ir al Formulario</a>
+             </div>
+              <div class="info-card" data-aos="zoom-in" data-aos-delay="400">
+                 <h3>Actualización Datos</h3>
+                 <p>Mantén tu información al día.</p>
+                 <a href="informacion basica.html">Ir al Formulario</a>
+             </div>
+        </div>
+     </section>
+
+     <section id="sobre-nosotros" class="container section">
+         <h2 data-aos="fade-up">Sobre Nosotros</h2>
+         <div class="historia-vision-container text-only" data-aos-delay="100"> 
+             
+             <div class="sub-pane" data-aos="fade-right" data-aos-delay="150">
+                  
+                  <div class="sub-pane-text">
+                     <h3>Nuestra Historia</h3>
+                     
+                     <p>
+                         BankCloud nació en 2025 como un proyecto académico ambicioso, fruto del esfuerzo y la colaboración.
+                         Impulsados por el reto de crear una empresa adaptada al mundo actual, unimos talentos para
+                         diseñar un concepto de banca innovador: una entidad que fusiona la confianza tradicional
+                         con la agilidad y accesibilidad de la tecnología en la nube. Nuestro objetivo siempre ha sido
+                         trascender el aula, construyendo servicios financieros eficientes y seguros para las nuevas generaciones.
+                     </p>
+                  </div>
+             </div>
+             
+              <div class="sub-pane" data-aos="fade-left" data-aos-delay="250">
+                   
+                  <div class="sub-pane-text">
+                     <h3>Nuestra Visión</h3>
+                      
+                     <p>
+                         Aspiramos a consolidarnos como el banco digital de referencia en América Latina, siendo la opción
+                         preferida por clientes que buscan confianza, excelencia en el servicio e innovación constante.
+                         Nos proyectamos como un aliado clave en el bienestar y crecimiento financiero de las personas
+                         y empresas de la región, facilitando sus metas a través de soluciones digitales seguras y accesibles.
+                     </p>
+                  </div>
+             </div>
+         </div>
+     </section>
+
+     <section id="politicas" class="container section alternate-bg">
+         <h2 data-aos="fade-up">Nuestro Compromiso</h2>
+         <div class="card-grid">
+             <div class="info-card" data-aos="zoom-in" data-aos-delay="100">
+                 <h3>Transparencia</h3>
+                 <p>Información clara sobre nuestros productos y servicios.</p>
+                 <a href="politicas.html#politica-transparencia">Leer Política</a>
+             </div>
+              <div class="info-card" data-aos="zoom-in" data-aos-delay="200">
+                 <h3>Seguridad</h3>
+                 <p>Protección de tus datos y operaciones.</p>
+                 <a href="politicas.html#politica-seguridad">Leer Política</a>
+             </div>
+             <div class="info-card" data-aos="zoom-in" data-aos-delay="300">
+                 <h3>Sostenibilidad</h3>
+                 <p>Operamos con responsabilidad social y ambiental.</p>
+                 <a href="politicas.html#politica-sostenibilidad">Leer Política</a>
+             </div>
+         </div>
+      </section>
+
+    <footer>
+        <div class="container footer-content">
+             <div class="footer-top">
+                 <div class="footer-info">
+                     <img src="bankcloud big logo.png" alt="Logo BankCloud Footer" class="logo-img" id="footer-logo">
+                     <p class="footer-slogan">Creciendo contigo, conectados en la nube.</p>
+                 </div>
+                 <div class="footer-contact">
+                     <h4>Contacto</h4>
+                     <p><i class="fas fa-phone"></i> +1 (809) 555-1234</p>
+                     <p><i class="fas fa-envelope"></i> contacto@bankcloud.com</p>
+                     <p><i class="fas fa-map-marker-alt"></i> Torre Financiera BankCloud, Av. Winston Churchill #123, Santo Domingo, RD.</p>
+                 </div>
+                 <div class="footer-social">
+                     <h4>Síguenos</h4>
+                     <div class="social-links">
+                         <a href="#" aria-label="Twitter" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
+                         <a href="#" aria-label="Instagram" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+                         <a href="#" aria-label="Facebook" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a>
+                         <a href="#" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin-in"></i></a>
+                         <a href="#" aria-label="TikTok" target="_blank" rel="noopener noreferrer"><i class="fab fa-tiktok"></i></a>
+                     </div>
+                     <a href="equipo.html" class="footer-button">Conoce Nuestro Equipo</a>
+                 </div>
+             </div>
+             <div class="footer-bottom">
+                <p>&copy; 2025 BankCloud. Todos los derechos reservados.</p>
+             </div>
+        </div>
+    </footer>
+
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      // Initialize AOS (scroll animations)
+      AOS.init({
+          duration: 800,
+          once: false // Re-animate on scroll up/down and tab change
+      });
+
+      // --- Mobile Menu Script ---
+      const mobileMenuButton = document.getElementById('mobile-menu-button');
+      const navLinksContainer = document.getElementById('nav-links-container');
+      const navLinks = document.querySelectorAll('.nav-link'); // Re-select all nav links
+
+      mobileMenuButton.addEventListener('click', () => {
+          navLinksContainer.classList.toggle('active');
+          const icon = mobileMenuButton.querySelector('i');
+          const isActive = navLinksContainer.classList.contains('active');
+          icon.classList.toggle('fa-bars', !isActive);
+          icon.classList.toggle('fa-times', isActive);
+          mobileMenuButton.setAttribute('aria-expanded', isActive);
+          mobileMenuButton.setAttribute('aria-label', isActive ? 'Cerrar menú' : 'Abrir menú');
+      });
+
+      // Close menu when an internal anchor link is clicked
+      navLinks.forEach(link => {
+          if (link.getAttribute('href') && link.getAttribute('href').startsWith('#')) {
+              link.addEventListener('click', () => {
+                  if (navLinksContainer.classList.contains('active')) {
+                      navLinksContainer.classList.remove('active');
+                      const icon = mobileMenuButton.querySelector('i');
+                      icon.classList.remove('fa-times');
+                      icon.classList.add('fa-bars');
+                      mobileMenuButton.setAttribute('aria-expanded', 'false');
+                      mobileMenuButton.setAttribute('aria-label', 'Abrir menú');
+                  }
+              });
+          }
+      });
+
+      // --- Tabs Script ---
+      const tabsButtons = document.querySelectorAll('.tab-button');
+      const tabsPanes = document.querySelectorAll('.tab-pane');
+
+      tabsButtons.forEach(button => {
+          button.addEventListener('click', () => {
+              const targetTab = button.getAttribute('data-tab');
+
+              tabsButtons.forEach(btn => btn.classList.remove('active'));
+              tabsPanes.forEach(pane => pane.classList.remove('active'));
+
+              button.classList.add('active');
+              const targetPane = document.getElementById(targetTab);
+              if (targetPane) {
+                targetPane.classList.add('active');
+              }
+
+              // Refresh AOS after a short delay
+              setTimeout(() => {
+                 AOS.refreshHard();
+              }, 150);
+          });
+      });
+
+      // --- Currency Converter Script ---
+      const dopUsdInput = document.getElementById('dop-usd');
+      const resultUsd = document.getElementById('result-usd');
+      const dopEurInput = document.getElementById('dop-eur');
+      const resultEur = document.getElementById('result-eur');
+
+      // rates 
+      const RATE_USD = 0.017; // Example: 1 DOP = 0.017 USD
+      const RATE_EUR = 0.016; // Example: 1 DOP = 0.016 EUR
+
+      if (dopUsdInput && resultUsd) {
+          dopUsdInput.addEventListener('input', () => {
+              const dopAmount = parseFloat(dopUsdInput.value);
+              if (!isNaN(dopAmount)) {
+                  const usdAmount = (dopAmount * RATE_USD).toFixed(2);
+                  resultUsd.textContent = `Resultado: $${usdAmount} USD`;
+              } else {
+                  resultUsd.textContent = 'Resultado: $0.00 USD';
+              }
+          });
+      }
+
+       if (dopEurInput && resultEur) {
+          dopEurInput.addEventListener('input', () => {
+              const dopAmount = parseFloat(dopEurInput.value);
+              if (!isNaN(dopAmount)) {
+                  const eurAmount = (dopAmount * RATE_EUR).toFixed(2);
+                  resultEur.textContent = `Resultado: €${eurAmount} EUR`;
+              } else {
+                  resultEur.textContent = 'Resultado: €0.00 EUR';
+              }
+          });
+       }
+
+      // --- Active Section Highlighting Script ---
+      const sections = document.querySelectorAll('section[id]');
+      const mainNavLinks = document.querySelectorAll('#main-nav .nav-links ul li a[href^="#"]');
+
+      window.addEventListener('scroll', () => {
+          let currentSectionId = '';
+          const header = document.querySelector('header');
+          const headerHeight = header ? header.offsetHeight + 20 : 90; // Add a small buffer
+
+          sections.forEach( section => {
+              const sectionTop = section.offsetTop;
+              const sectionHeight = section.clientHeight;
+              if (pageYOffset >= (sectionTop - headerHeight) && pageYOffset < (sectionTop + sectionHeight - headerHeight)) {
+                  currentSectionId = section.getAttribute('id');
+              }
+          });
+
+           if (!currentSectionId && sections.length > 0 && pageYOffset < (sections[0].offsetTop - headerHeight / 2)) {
+               currentSectionId = 'hero';
+           }
+
+
+          mainNavLinks.forEach( a => {
+              a.classList.remove('active');
+              const linkHref = a.getAttribute('href');
+              if (linkHref === '#' + currentSectionId) {
+                  a.classList.add('active');
+              }
+          });
+      });
+      window.dispatchEvent(new Event('scroll'));
+
+    </script>
+</body>
+</html>

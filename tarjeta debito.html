@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solicitud Tarjeta de Débito - BankCloud</title>
+     <link rel="icon" href="bankcloudtinylogo.ico" type="image/x-icon">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/brands.min.css">
+
+     <style>
+        /* --- Variables CSS --- */
+        :root {
+            --primary-blue: #0056b3; --dark-blue: #003366; --light-blue: #e6f0ff;
+            --accent-blue: #007bff; --white: #ffffff; --grey-light: #f8f9fa;
+            --grey-medium: #e9ecef; --grey-dark: #6c757d; --text-color: #333;
+            --text-light: #555; --footer-text: #adb5bd; --font-family: 'Poppins', sans-serif;
+            --box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); --border-radius: 8px;
+            --header-height: 70px;
+        }
+        /* --- Estilos Base --- */
+        html { scroll-behavior: smooth; scroll-padding-top: var(--header-height); overflow-x: hidden; }
+        body { font-family: var(--font-family); margin: 0; padding: 0; background-color: var(--grey-light); color: var(--text-color); line-height: 1.6; padding-top: var(--header-height); }
+        .main-container { max-width: 800px; margin: 2rem auto; padding: 2rem; background-color: var(--white); border-radius: var(--border-radius); box-shadow: var(--box-shadow); }
+        h1, h2 { color: var(--dark-blue); margin-bottom: 1rem; font-weight: 600; }
+        h1 { font-size: 1.8rem; text-align: center; margin-bottom: 2rem; }
+        h2 { font-size: 1.3rem; color: var(--primary-blue); border-bottom: 1px solid var(--grey-medium); padding-bottom: 0.5rem; margin-top: 2rem; margin-bottom: 1.5rem; }
+        h4 { font-size: 1.2rem; color: var(--white); margin-bottom: 1rem; font-weight: 600; } /* Footer heading */
+        /* --- Estilos de Formulario --- */
+        form { width: 100%; }
+        .form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-bottom: 1.5rem; }
+        .form-group { margin-bottom: 1.25rem; }
+        .form-label { display: block; font-size: 0.9rem; font-weight: 500; color: var(--text-light); margin-bottom: 0.4rem; }
+        .form-input, .form-select, .form-textarea { width: 100%; padding: 0.75rem 1rem; border: 1px solid var(--grey-medium); border-radius: var(--border-radius); background-color: var(--grey-light); font-size: 1rem; color: var(--text-color); transition: border-color 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease; box-sizing: border-box; }
+        .form-input:focus, .form-select:focus, .form-textarea:focus { outline: none; border-color: var(--primary-blue); background-color: var(--white); box-shadow: 0 0 0 2px rgba(0, 86, 179, 0.2); }
+        .form-checkbox-label, .form-radio-label { display: flex; align-items: center; gap: 0.5rem; font-size: 0.95rem; color: var(--text-light); margin-bottom: 0.5rem; }
+        .form-checkbox, .form-radio { height: 1.1em; width: 1.1em; cursor: pointer; accent-color: var(--primary-blue); }
+        .form-checkbox-group, .form-radio-group { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 0.5rem; }
+        .submit-button { display: inline-block; background-color: var(--primary-blue); color: var(--white); padding: 0.8rem 2rem; border: none; border-radius: var(--border-radius); font-size: 1.1rem; font-weight: 600; cursor: pointer; transition: background-color 0.3s ease, transform 0.2s ease; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); }
+        .submit-button:hover { background-color: var(--dark-blue); transform: translateY(-2px); }
+        .button-container { text-align: center; margin-top: 2.5rem; }
+        .required-docs { background-color: var(--light-blue); padding: 1rem; border-radius: var(--border-radius); border: 1px solid var(--primary-blue); margin-bottom: 1.5rem; }
+        .required-docs h3 { color: var(--dark-blue); font-size: 1rem; margin-top: 0; margin-bottom: 0.5rem; }
+        .required-docs ul { list-style: disc; padding-left: 1.5rem; font-size: 0.9rem; color: var(--text-light); }
+        .signature-area { border: 1px dashed var(--grey-dark); border-radius: var(--border-radius); min-height: 100px; background-color: var(--grey-light); display: flex; align-items: center; justify-content: center; color: var(--grey-dark); font-style: italic; margin-top: 0.5rem; }
+
+        /* --- Navbar Styles --- */
+        header { background-color: var(--white); padding: 0.5rem 0; position: fixed; top: 0; left: 0; right: 0; z-index: 1000; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); min-height: var(--header-height); display: flex; align-items: center; }
+        header .container { display: flex; justify-content: space-between; align-items: center; width: 90%; max-width: 1140px; margin: auto; }
+        .logo-link { display: flex; align-items: center; gap: 10px; text-decoration: none; flex-shrink: 0; }
+        .logo-img { height: 40px; width: auto; display: block; }
+        header nav#main-nav { margin-left: auto; margin-right: 20px; }
+        #nav-links-container ul { display: flex; align-items: center; list-style: none; padding: 0; margin: 0; }
+        #nav-links-container ul li { margin-left: 18px; }
+        #nav-links-container ul li a { color: var(--grey-dark); font-weight: 400; padding: 5px 0; border-bottom: 2px solid transparent; transition: border-color 0.3s ease, color 0.3s ease; position: relative; display: block; white-space: nowrap; font-size: 0.95rem; text-decoration: none; }
+        #nav-links-container ul li a:hover, #nav-links-container ul li a.active { color: var(--primary-blue); border-bottom-color: var(--primary-blue); }
+        .login-button-mobile-li { display: none; }
+        .login-button { background-color: var(--primary-blue); color: white; border: none; padding: 10px 20px; border-radius: var(--border-radius); cursor: pointer; font-weight: 600; transition: background-color 0.3s ease, transform 0.2s ease; white-space: nowrap; flex-shrink: 0; text-decoration: none; }
+        .login-button:hover { background-color: var(--dark-blue); transform: translateY(-2px); }
+        .menu-toggle { display: none; background: none; border: none; font-size: 1.8rem; color: var(--dark-blue); cursor: pointer; padding: 5px; z-index: 1010; transition: color 0.3s ease; margin-left: 15px; }
+        .menu-toggle:hover { color: var(--primary-blue); }
+        .menu-toggle i { display: inline-block; }
+        .menu-toggle .fa-times { display: none; }
+
+        /* --- Footer Styles --- */
+        footer { background-color: var(--dark-blue); color: var(--footer-text); padding: 50px 0 30px; margin-top: 3rem; }
+        footer .container { max-width: 1140px; margin: auto; padding: 0 15px; }
+        .footer-content { display: flex; flex-direction: column; align-items: center; gap: 30px; text-align: center; }
+        .footer-top { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; width: 100%; align-items: start; text-align: left; }
+        .footer-info, .footer-contact, .footer-social { display: flex; flex-direction: column; gap: 15px; }
+        .footer-info #footer-logo { height: 35px; width: auto; opacity: 0.9; margin-bottom: 10px; }
+        .footer-slogan { font-size: 1rem; font-style: italic; margin: 0; line-height: 1.5; }
+        .footer-contact h4, .footer-social h4 { margin-bottom: 10px; text-align: left; color: var(--white); }
+        .footer-contact p { margin: 5px 0; font-size: 0.95rem; display: flex; align-items: center; gap: 8px; }
+        .footer-contact p i { color: var(--accent-blue); width: 16px; text-align: center; }
+        .footer-social { align-items: flex-start; }
+        .social-links { display: flex; gap: 15px; margin-bottom: 15px; }
+        .social-links a { color: var(--white); font-size: 1.4rem; transition: color 0.3s ease, transform 0.3s ease; }
+        .social-links a:hover { color: var(--accent-blue); transform: scale(1.1); }
+        .footer-button { display: inline-block; background-color: var(--accent-blue); color: var(--white); padding: 10px 25px; border-radius: var(--border-radius); text-decoration: none; font-weight: 600; transition: background-color 0.3s ease, transform 0.2s ease; align-self: flex-start; }
+        .footer-button:hover { background-color: var(--primary-blue); transform: translateY(-2px); }
+        .footer-bottom { margin-top: 30px; padding-top: 25px; border-top: 1px solid var(--grey-dark); width: 100%; text-align: center; }
+        .footer-bottom p { margin: 0; font-size: 0.9rem; color: var(--footer-text); }
+
+        /* --- Responsive Styles --- */
+        @media (max-width: 992px) {
+            header nav#main-nav ul { display: none; }
+            #nav-links-container.active ul { display: flex; }
+            .login-button.desktop-only { display: none; }
+            .menu-toggle { display: block; order: 3; }
+            header nav#main-nav { margin-right: 0; }
+            #nav-links-container { display: block; position: absolute; top: 100%; left: 0; width: 100%; background-color: var(--white); box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); z-index: 999; height: 0; opacity: 0; overflow: hidden; visibility: hidden; transition: height 0.4s ease-out, opacity 0.3s ease-in-out 0.1s, visibility 0s linear 0.4s, padding 0.4s ease-out; }
+            #nav-links-container.active { height: auto; max-height: calc(100vh - 70px - 1rem); opacity: 1; visibility: visible; overflow-y: auto; padding: 1rem 0; transition: max-height 0.4s ease-out, height 0.4s ease-out, opacity 0.3s ease-in-out, visibility 0s linear 0s, padding 0.4s ease-out; }
+            #nav-links-container ul { display: flex; flex-direction: column; align-items: center; width: 100%; padding: 0; margin: 0; }
+            #nav-links-container ul li { margin-left: 0; width: 100%; text-align: center; opacity: 1; transform: none; transition: none; }
+            #nav-links-container ul li a { padding: 1rem 1.5rem; border-bottom: 1px solid var(--grey-medium); width: 100%; box-sizing: border-box; border-bottom-color: transparent !important; display: block; transition: background-color 0.2s ease, color 0.2s ease; font-size: 1rem; color: var(--grey-dark); }
+            #nav-links-container ul li a:hover, #nav-links-container ul li a.active { background-color: var(--light-blue); color: var(--primary-blue); border-bottom-color: transparent !important; }
+            .login-button-mobile-li { display: block; margin-top: 10px; padding: 0 1.5rem; width: 100%; box-sizing: border-box; }
+            .login-button.mobile-only { display: inline-block; width: auto; padding: 10px 25px; background-color: var(--primary-blue); color: var(--white) !important; border-radius: var(--border-radius); text-align: center; margin: 10px auto; transition: background-color 0.3s ease, transform 0.2s ease; text-decoration: none; }
+            .login-button.mobile-only:hover { background-color: var(--dark-blue); transform: translateY(-2px); }
+            .footer-top { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+        }
+         @media (max-width: 768px) {
+            h1 { font-size: 1.6rem; }
+            h2 { font-size: 1.2rem; }
+            .main-container { padding: 1.5rem; margin: 1rem auto; }
+            .footer-top { grid-template-columns: 1fr; text-align: center; }
+            .footer-info, .footer-contact, .footer-social { align-items: center; }
+            .footer-contact p, .footer-social h4 { text-align: center; justify-content: center;}
+            .footer-button { align-self: center; }
+         }
+         @media (min-width: 993px) {
+             header nav#main-nav ul { display: flex !important; }
+             #nav-links-container { display: block !important; position: static !important; height: auto !important; max-height: none !important; overflow: visible !important; background: none !important; box-shadow: none !important; padding: 0 !important; opacity: 1 !important; visibility: visible !important; }
+             #nav-links-container ul { flex-direction: row !important; }
+             #nav-links-container ul li { width: auto !important; }
+             #nav-links-container ul li a { border-bottom: 2px solid transparent !important; padding: 5px 0 !important; }
+             #nav-links-container ul li a:hover, #nav-links-container ul li a.active { background: none !important; color: var(--primary-blue) !important; border-bottom-color: var(--primary-blue) !important; }
+             .menu-toggle { display: none !important; }
+             .login-button.desktop-only { display: inline-block !important; }
+             .login-button-mobile-li { display: none !important; }
+             /* Footer layout on larger screens */
+             .footer-top { text-align: left; }
+             .footer-info, .footer-contact, .footer-social { align-items: flex-start; }
+             .footer-contact p, .footer-social h4 { text-align: left; justify-content: flex-start; }
+             .footer-button { align-self: flex-start; }
+         }
+    </style>
+</head>
+<body>
+
+     <header>
+        
+         <div class="container">
+            <a href="index.html#hero" class="logo-link">
+                <img src="bankcloud big logo.png" alt="Logo BankCloud" class="logo-img" id="header-logo">
+            </a>
+            <button class="menu-toggle" id="mobile-menu-button" aria-label="Abrir menú" aria-expanded="false">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-times"></i>
+            </button>
+            <nav id="main-nav">
+                <div class="nav-links" id="nav-links-container">
+                    <ul>
+                        <li><a href="index.html#hero" class="nav-link">Inicio</a></li>
+                        <li><a href="index.html#servicios" class="nav-link">Servicios</a></li>
+                        <li><a href="index.html#features" class="nav-link">Beneficios</a></li>
+                        <li><a href="index.html#productos" class="nav-link">Productos</a></li>
+                        <li><a href="index.html#sobre-nosotros" class="nav-link">Nosotros</a></li>
+                        <li><a href="index.html#formularios" class="nav-link">Solicitudes</a></li>
+                        <li><a href="index.html#politicas" class="nav-link">Políticas</a></li>
+                         <li class="login-button-mobile-li"><a href="#" class="login-button mobile-only">Banca en Línea</a></li>
+                    </ul>
+                </div>
+            </nav>
+            <button class="login-button desktop-only">Banca en Línea</button>
+        </div>
+    </header>
+
+    <div class="main-container">
+        <h1>Solicitud de Tarjeta de Débito</h1>
+
+        <form action="#" method="POST">
+            
+             <h2>1. Información Personal</h2>
+            <div class="form-grid">
+                <div class="form-group">
+                    <label for="nombre_completo" class="form-label">Nombre completo:</label>
+                    <input type="text" id="nombre_completo" name="nombre_completo" class="form-input" required>
+                </div>
+                <div class="form-group">
+                    <label for="cedula_pasaporte" class="form-label">Cédula/Pasaporte:</label>
+                    <input type="text" id="cedula_pasaporte" name="cedula_pasaporte" class="form-input" required>
+                </div>
+                <div class="form-group">
+                    <label for="fecha_nacimiento" class="form-label">Fecha de nacimiento:</label>
+                    <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" class="form-input" required>
+                </div>
+                <div class="form-group">
+                    <label for="nacionalidad" class="form-label">Nacionalidad:</label>
+                    <input type="text" id="nacionalidad" name="nacionalidad" class="form-input" required>
+                </div>
+                <div class="form-group sm:col-span-2">
+                     <label class="form-label">Estado civil:</label>
+                     <div class="form-radio-group">
+                         <div class="form-radio-label">
+                             <input type="radio" id="ec_soltero" name="estado_civil" value="soltero" class="form-radio" checked>
+                             <label for="ec_soltero">Soltero/a</label>
+                         </div>
+                         <div class="form-radio-label">
+                             <input type="radio" id="ec_casado" name="estado_civil" value="casado" class="form-radio">
+                             <label for="ec_casado">Casado/a</label>
+                         </div>
+                         <div class="form-radio-label">
+                             <input type="radio" id="ec_otro" name="estado_civil" value="otro" class="form-radio">
+                             <label for="ec_otro">Otro</label>
+                         </div>
+                     </div>
+                </div>
+                <div class="form-group sm:col-span-2 md:col-span-3">
+                    <label for="direccion" class="form-label">Dirección completa:</label>
+                    <input type="text" id="direccion" name="direccion" class="form-input" required>
+                </div>
+                 <div class="form-group">
+                    <label for="telefono" class="form-label">Teléfono:</label>
+                    <input type="tel" id="telefono" name="telefono" class="form-input" required>
+                </div>
+                <div class="form-group">
+                    <label for="email" class="form-label">Correo electrónico:</label>
+                    <input type="email" id="email" name="email" class="form-input" required>
+                </div>
+            </div>
+
+            <h2>2. Información de la Cuenta</h2>
+            <div class="form-grid">
+                <div class="form-group">
+                    <label for="numero_cuenta" class="form-label">Número de cuenta BankCloud:</label>
+                    <input type="text" id="numero_cuenta" name="numero_cuenta" class="form-input" required>
+                </div>
+                 <div class="form-group">
+                     <label class="form-label">Tipo de cuenta:</label>
+                     <div class="form-radio-group">
+                         <div class="form-radio-label">
+                             <input type="radio" id="tipo_ahorros" name="tipo_cuenta" value="ahorros" class="form-radio" checked>
+                             <label for="tipo_ahorros">Ahorros</label>
+                         </div>
+                         <div class="form-radio-label">
+                             <input type="radio" id="tipo_corriente" name="tipo_cuenta" value="corriente" class="form-radio">
+                             <label for="tipo_corriente">Corriente</label>
+                         </div>
+                     </div>
+                </div>
+                <div class="form-group sm:col-span-2 md:col-span-3">
+                    <label for="sucursal_retiro" class="form-label">Sucursal donde desea retirar la tarjeta:</label>
+                    <input type="text" id="sucursal_retiro" name="sucursal_retiro" class="form-input" placeholder="Ej: Sucursal Principal Churchill" required>
+                </div>
+            </div>
+
+            <h2>3. Autorizaciones y Firma</h2>
+            <div class="space-y-4 mb-6">
+                 <div class="form-checkbox-label">
+                    <input type="checkbox" id="declaracion_veracidad" name="declaracion_veracidad" class="form-checkbox" required>
+                    <label for="declaracion_veracidad">Declaro que la información proporcionada es verídica y autorizo a Bankcloud a procesar mi solicitud.</label>
+                </div>
+                 <div class="form-checkbox-label">
+                    <input type="checkbox" id="aceptacion_terminos" name="aceptacion_terminos" class="form-checkbox" required>
+                     <label for="aceptacion_terminos">Acepto los <a href="#" class="text-bankcloud-blue hover:underline">términos y condiciones</a> del banco.</label>
+                </div>
+            </div>
+            <div class="form-group">
+                 <label for="firma_solicitante" class="form-label">Firma del solicitante:</label>
+                 <div class="signature-area">
+                     Espacio para firma
+                 </div>
+                 <input type="hidden" id="firma_solicitante" name="firma_solicitante">
+            </div>
+            <div class="form-group">
+                <label for="fecha_solicitud" class="form-label">Fecha:</label>
+                <input type="date" id="fecha_solicitud" name="fecha_solicitud" class="form-input w-full sm:w-1/2" required>
+            </div>
+
+            <div class="required-docs">
+                <h3>Documentos Requeridos</h3>
+                <ul>
+                    <li>Copia de cédula o pasaporte vigente.</li>
+                </ul>
+            </div>
+
+            <div class="button-container">
+                <button type="submit" class="submit-button">
+                    Enviar Solicitud
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <footer>
+        
+         <div class="container footer-content">
+             <div class="footer-top">
+                 <div class="footer-info">
+                     <img src="bankcloud big logo.png" alt="Logo BankCloud Footer" class="logo-img" id="footer-logo">
+                     <p class="footer-slogan">Creciendo contigo, conectados en la nube.</p>
+                 </div>
+                 <div class="footer-contact">
+                     <h4>Contacto</h4>
+                     <p><i class="fas fa-phone"></i> +1 (809) 555-1234</p>
+                     <p><i class="fas fa-envelope"></i> contacto@bankcloud.com</p>
+                     <p><i class="fas fa-map-marker-alt"></i> Torre Financiera BankCloud, Av. Winston Churchill #123, Santo Domingo, RD.</p>
+                 </div>
+                 <div class="footer-social">
+                     <h4>Síguenos</h4>
+                     <div class="social-links">
+                         <a href="#" aria-label="Twitter" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
+                         <a href="#" aria-label="Instagram" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+                         <a href="#" aria-label="Facebook" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a>
+                         <a href="#" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin-in"></i></a>
+                         <a href="#" aria-label="TikTok" target="_blank" rel="noopener noreferrer"><i class="fab fa-tiktok"></i></a>
+                     </div>
+                     <a href="equipo.html" class="footer-button">Conoce Nuestro Equipo</a>
+                 </div>
+             </div>
+             <div class="footer-bottom">
+                <p>&copy; 2025 BankCloud. Todos los derechos reservados.</p>
+             </div>
+        </div>
+    </footer>
+
+    <script>
+      const mobileMenuButton = document.getElementById('mobile-menu-button');
+      const navLinksContainer = document.getElementById('nav-links-container');
+      const menuIconBars = mobileMenuButton.querySelector('.fa-bars');
+      const menuIconTimes = mobileMenuButton.querySelector('.fa-times');
+
+      if(menuIconTimes) menuIconTimes.style.display = 'none';
+
+      mobileMenuButton.addEventListener('click', () => {
+          const isActive = navLinksContainer.classList.toggle('active');
+           if (menuIconBars && menuIconTimes) {
+              menuIconBars.style.display = isActive ? 'none' : 'inline-block';
+              menuIconTimes.style.display = isActive ? 'inline-block' : 'none';
+           }
+          mobileMenuButton.setAttribute('aria-expanded', isActive);
+          mobileMenuButton.setAttribute('aria-label', isActive ? 'Cerrar menú' : 'Abrir menú');
+      });
+
+      const navLinks = navLinksContainer.querySelectorAll('.nav-link');
+      navLinks.forEach(link => {
+          link.addEventListener('click', () => { /* ignorar */ });
+      });
+    </script>
+
+</body>
+</html>
